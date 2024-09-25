@@ -15,6 +15,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	log.SetOutput(os.Stdout)
 	log.Println("Starting server on port :80")
+	log.Print("Got here")
 	http.HandleFunc("/", handler)
 	log.Fatal(http.ListenAndServe(":80", nil))
 }
