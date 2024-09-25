@@ -53,7 +53,7 @@ jobs:
         uses: fjogeleit/yaml-update-action@main
         with:
           valueFile: 'backend/deployment.yaml'
-          propertyPath: 'spec.template.spec.containers.image'
+          propertyPath: 'containers.image'
           value: jovik31/go-backend:v${{github.run_number}}
           repository: 'jovik31/prod-cluster'
           masterBranchName: main
