@@ -2,7 +2,7 @@ name: docker-build-push
 
 on: 
   workflow_run:
-    workflows: ['linting']
+    workflows: ['golangci-lint']
     types: [completed]
     branches:
       - main
