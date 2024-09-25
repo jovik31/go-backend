@@ -3,7 +3,7 @@ name: docker-build-push
 on: 
   workflow_run:
     workflows: ['linting']
-    types: ['completed']
+    types: [completed]
     branches:
       - main
       
