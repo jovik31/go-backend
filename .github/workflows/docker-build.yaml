@@ -62,7 +62,7 @@ jobs:
           createPR: true
           message: 'Automated by Github Actions: Changes by runner ${{ github.run_number }}'
           token: ${{ secrets.PAT_GITHUB }}
-          workDir: backend
+          workDir: .
             
         
           
