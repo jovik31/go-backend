@@ -1,7 +1,9 @@
 name: docker-build-push
 
 on: 
-  push:
+  workflow_run:
+    workflows: ['linting']
+    types: ['completed']
     branches:
       - main
       
