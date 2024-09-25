@@ -40,7 +40,6 @@ jobs:
         name: change YAML deployment
         with:
           repository: 'jovik31/prod-cluster'
-          path: backend
           token: ${{ secrets.PAT_GITHUB}}
      # - name: configs
       #  run: |
@@ -62,7 +61,7 @@ jobs:
           createPR: true
           message: 'Automated by Github Actions: Changes by runner ${{ github.run_number }}'
           token: ${{ secrets.PAT_GITHUB }}
-          workDir: .
+          workDir: backend
             
         
           
