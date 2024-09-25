@@ -48,6 +48,10 @@ jobs:
       - name: change deployment
         uses: fjogeleit/yaml-update-action@main
         with:
+          repository: 'jovik31/prod-cluster'
+          masterBranchName: main
+          branch: main
+          force: true
           workDir: ./backend
           valueFile: 'deployment.yaml'
           propertyPath: 'spec.template.spec.containers.image'
