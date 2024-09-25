@@ -6,6 +6,9 @@ on:
     types: [completed]
     branches:
       - main
+  push:
+    branches:
+      - main
       
 jobs:
   push_to_registry:
@@ -37,6 +40,7 @@ jobs:
         name: change YAML deployment
         with:
           repository: 'jovik31/prod-cluster'
+          path: backend
           token: ${{ secrets.PAT_GITHUB}}
      # - name: configs
       #  run: |
@@ -48,21 +52,17 @@ jobs:
       - name: change deployment
         uses: fjogeleit/yaml-update-action@main
         with:
-          repository: 'jovik31/prod-cluster'
-          masterBranchName: main
-          branch: main
-          force: true
-          workDir: ./backend
           valueFile: 'deployment.yaml'
           propertyPath: 'spec.template.spec.containers.image'
           value: jovik31/go-backend:v${{github.run_number}}
-          commitUSerName: jovik31
-          commitUserEmail: ${{ secrets.EMAIL_GITHUB}}
-          commitChange: true
-          message: 'Automated by Github Actions: Changes by runner ${{ github.run_number }}'
-          createPR: true
+          repository: 'jovik31/prod-cluster'
+          masterBranchName: main
+          branch: main
           targetBranch: main
-          token: ${{secrets.PAT_GITHUB}}
+          createPR: true
+          message: 'Automated by Github Actions: Changes by runner ${{ github.run_number }}'
+          token: ${{ secrets.PAT_GITHUB }}
+          workDir: backend
             
         
           
