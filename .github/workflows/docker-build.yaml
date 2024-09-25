@@ -6,6 +6,9 @@ on:
     types: [completed]
     branches:
       - main
+  push:
+    branches:
+      - main
     tags:
       - 'v*'
       
@@ -31,10 +34,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          push: ${{ github.event_name 1= 'pull_request'}}
+          push: true
           tags: ${{ steps.meta.outputs.tags}}
           labels: ${{ steps.meta.outputs.labels}}
-          file: ./Dockerfile
-          push: true
-          tags: jovik31/go-backend:latest
     
