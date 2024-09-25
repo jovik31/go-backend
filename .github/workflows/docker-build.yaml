@@ -18,6 +18,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: jovik31/go-backend
+          tags:
+            type=semver, pattern={{major}}.{{minor}}
           
       - name: check repository
         uses: docker/login-action@v3
