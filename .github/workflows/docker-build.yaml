@@ -60,6 +60,8 @@ jobs:
           commitUserEmail: ${{ secrets.EMAIL_GITHUB}}
           commitChange: true
           message: 'Automated by Github Actions: Changes by runner ${{ github.run_number }}'
+          createPR: true
+          token: ${{secrets.PAT_GITHUB}}
             
         
           
