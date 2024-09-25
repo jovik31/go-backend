@@ -53,13 +53,13 @@ jobs:
         uses: fjogeleit/yaml-update-action@main
         with:
           valueFile: 'backend/deployment.yaml'
-          propertyPath: 'containers.image'
+          propertyPath: 'template.containers.image'
           value: jovik31/go-backend:v${{github.run_number}}
           repository: 'jovik31/prod-cluster'
           masterBranchName: main
           branch: main
           targetBranch: main
-          createPR: true
+          createPR: false
           message: 'Automated by Github Actions: Changes by runner ${{ github.run_number }}'
           token: ${{ secrets.PAT_GITHUB }}
           workDir: backend
