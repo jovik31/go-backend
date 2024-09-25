@@ -38,13 +38,22 @@ jobs:
         with:
           repository: 'jovik31/prod-cluster'
           token: ${{ secrets.PAT_GITHUB}}
-      - name: modify the image
+      - name: configs
         run: |
           git config user.email joaogvicente@gmail.com
           git config user.name jovik31
           cd backend
           pwd
           cat deployment.yaml
+      - name: change deployment
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          valueFile: 'deployment.yaml'
+          propertyPath: 'spec.template.spec.containers.image'
+          value: jovik31/go-backend:v${{github.run_number}}
+          commitChange: false
+            
+        
           
             
   
