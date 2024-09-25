@@ -48,6 +48,7 @@ jobs:
       - name: change deployment
         uses: fjogeleit/yaml-update-action@main
         with:
+          workDir: ./backend
           valueFile: 'deployment.yaml'
           propertyPath: 'spec.template.spec.containers.image'
           value: jovik31/go-backend:v${{github.run_number}}
