@@ -38,13 +38,13 @@ jobs:
         with:
           repository: 'jovik31/prod-cluster'
           token: ${{ secrets.PAT_GITHUB}}
-      - name: configs
-        run: |
-          git config user.email joaogvicente@gmail.com
-          git config user.name jovik31
-          cd backend
-          pwd
-          cat deployment.yaml
+     # - name: configs
+      #  run: |
+      #    git config user.email joaogvicente@gmail.com
+       #   git config user.name jovik31
+       #   cd backend
+       #   pwd
+        #  cat deployment.yaml
       - name: change deployment
         uses: fjogeleit/yaml-update-action@main
         with:
@@ -61,6 +61,7 @@ jobs:
           commitChange: true
           message: 'Automated by Github Actions: Changes by runner ${{ github.run_number }}'
           createPR: true
+          targetBranch: main
           token: ${{secrets.PAT_GITHUB}}
             
         
