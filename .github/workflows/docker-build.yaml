@@ -29,4 +29,23 @@ jobs:
           context: .
           push: true
           tags: jovik31/go-backend:v${{ github.run_number}}
+  modifygit:
+    needs: push_to_registry
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: change YAML deployment
+        with:
+          repository: 'jovik31/prod-cluster'
+          token: ${{ secrets.PAT_GITHUB}}
+      - name: modify the image
+        run: |
+          git config user.email joaogvicente@gmail.com
+          git config user.name jovik31
+          cd backend
+          pwd
+          cat deployment.yaml
+          
+            
+  
     
