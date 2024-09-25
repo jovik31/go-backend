@@ -51,7 +51,10 @@ jobs:
           valueFile: 'deployment.yaml'
           propertyPath: 'spec.template.spec.containers.image'
           value: jovik31/go-backend:v${{github.run_number}}
-          commitChange: false
+          commitUSerName: jovik31
+          commitUserEmail: ${{ secrets.EMAIL_GITHUB}}
+          commitChange: true
+          message: 'Automated by Github Actions: Changes by runner ${{ github.run_number }}'
             
         
           
